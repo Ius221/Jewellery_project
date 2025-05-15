@@ -1,7 +1,7 @@
 <template>
   <div class="parent-div">
     <the-nav />
-    <h1>hello world</h1>
+    <router-view />
   </div>
 </template>
 

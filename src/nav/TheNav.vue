@@ -1,4 +1,5 @@
 <template>
+  <!-- 27391C give this color to the background of the image -->
   <nav class="navbar">
     <div class="company-name">GUPTA JEWELERY</div>
     <div class="nav-links">
@@ -20,7 +21,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #333;
+  background: radial-gradient(circle, #1f7d53, #255f38);
+
   color: white;
   padding: 1rem 2rem;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
