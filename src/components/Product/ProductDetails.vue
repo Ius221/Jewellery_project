@@ -13,7 +13,7 @@
         <div class="thumbnail-container">
           <div class="thumbnail active">
             <img
-              src="/api/placeholder/400/320"
+              :src="currentProduct.image"
               alt="Diamond Solitaire Ring - View 1"
             />
           </div>
@@ -46,11 +46,6 @@
         </p>
         <div class="product-price">${{ currentProduct.price }}</div>
 
-        <!-- <div class="product-rating">
-          <div class="stars">★★★★★</div>
-          <div class="review-count">(24 Reviews)</div>
-        </div> -->
-
         <p class="product-description">
           {{ currentProduct.shortDesc }}
         </p>
@@ -82,18 +77,7 @@
                 {{ currentProduct.shortSpecifications.Clarity }}
               </div>
             </div>
-            <!-- <div class="spec-item">
-              <div class="spec-label">Color:</div>
-              <div class="spec-value">F (Colorless)</div>
-            </div>
-            <div class="spec-item">
-              <div class="spec-label">Setting:</div>
-              <div class="spec-value">4-Prong</div>
-            </div>
-            <div class="spec-item">
-              <div class="spec-label">Band Width:</div>
-              <div class="spec-value">2mm</div>
-            </div> -->
+
             <div class="spec-item">
               <div class="spec-label">Certificate:</div>
               <div class="spec-value">GIA Certified</div>
@@ -127,7 +111,6 @@
         <button class="tab-btn" data-tab="shipping">Shipping & Returns</button>
       </div>
 
-      <!-- <div class="all-tab-contents"> -->
       <!-- Description bar -->
       <div id="description" class="tab-content active">
         <h3>Product Description</h3>
@@ -243,66 +226,33 @@
           returned unless there is a manufacturing defect.
         </p>
       </div>
-      <!-- </div> -->
     </div>
 
     <!-- Related products -->
+
     <div class="related-products">
-      <h2 class="section-title">You May Also Like</h2>
+      <div class="all-product">
+        <h2 class="section-title">You May Also Like</h2>
+        <router-link to="/products" class="rout-link">
+          <h4>All Products...</h4>
+        </router-link>
+      </div>
       <div class="products-grid">
-        <div class="product-card">
-          <div class="card-image">
-            <img src="/api/placeholder/400/320" alt="Diamond Halo Ring" />
+        <template v-for="(product, ind) in otherProduct" :key="ind">
+          <div class="product-card">
+            <div class="card-image">
+              <img :src="product.image" :alt="product.name" />
+            </div>
+            <div class="card-info">
+              <h3 class="card-title">{{ product.name }}</h3>
+              <div class="card-price">${{ product.price }}</div>
+              <div class="card-material">{{ product.material }}</div>
+              <router-link :to="'/products/' + product.id">
+                <button class="card-btn">View Details</button>
+              </router-link>
+            </div>
           </div>
-          <div class="card-info">
-            <h3 class="card-title">Diamond Halo Ring</h3>
-            <div class="card-price">$1,799.99</div>
-            <div class="card-material">18K White Gold</div>
-            <button class="card-btn">View Details</button>
-          </div>
-        </div>
-
-        <div class="product-card">
-          <div class="card-image">
-            <img
-              src="/api/placeholder/400/320"
-              alt="Three-Stone Diamond Ring"
-            />
-          </div>
-          <div class="card-info">
-            <h3 class="card-title">Three-Stone Diamond Ring</h3>
-            <div class="card-price">$2,499.99</div>
-            <div class="card-material">Platinum</div>
-            <button class="card-btn">View Details</button>
-          </div>
-        </div>
-
-        <div class="product-card">
-          <div class="card-image">
-            <img src="/api/placeholder/400/320" alt="Diamond Eternity Band" />
-          </div>
-          <div class="card-info">
-            <h3 class="card-title">Diamond Eternity Band</h3>
-            <div class="card-price">$1,199.99</div>
-            <div class="card-material">18K Rose Gold</div>
-            <button class="card-btn">View Details</button>
-          </div>
-        </div>
-
-        <div class="product-card">
-          <div class="card-image">
-            <img
-              src="/api/placeholder/400/320"
-              alt="Sapphire and Diamond Ring"
-            />
-          </div>
-          <div class="card-info">
-            <h3 class="card-title">Sapphire and Diamond Ring</h3>
-            <div class="card-price">$1,599.99</div>
-            <div class="card-material">18K White Gold</div>
-            <button class="card-btn">View Details</button>
-          </div>
-        </div>
+        </template>
       </div>
     </div>
   </div>
@@ -311,13 +261,27 @@
 <script>
 export default {
   inject: ["allProducts"],
+  methods: {
+    callRouter(route) {
+      const productId = route.params.productId;
+      const selectedProduct = this.allProducts.find(
+        (abc) => abc.id == productId
+      );
+      const nonSelectedProduct = this.allProducts.filter(
+        (abc) => abc.id != productId
+      );
+
+      this.otherProduct = nonSelectedProduct.slice(0, 4);
+      this.currentProduct = selectedProduct;
+    },
+  },
   created() {
-    const productId = this.$route.params.productId;
-    const selectedProduct = this.allProducts.find((abc) => abc.id == productId);
-    console.log(selectedProduct);
-    console.log("Product:", productId);
-    console.log("product injected ->" + this.allProducts);
-    this.currentProduct = selectedProduct;
+    this.callRouter(this.$route);
+  },
+  watch: {
+    $route(newRoute) {
+      this.callRouter(newRoute);
+    },
   },
   data() {
     return {
@@ -328,6 +292,11 @@ export default {
   mounted() {
     const tabButtons = document.querySelectorAll(".tab-btn");
     const tabContents = document.querySelectorAll(".tab-content");
+    const decreaseBtn = document.querySelector(".quantity-btn:first-child");
+    const increaseBtn = document.querySelector(".quantity-btn:last-child");
+    const quantityInput = document.querySelector(".quantity-input");
+    const thumbnails = document.querySelectorAll(".thumbnail");
+    const mainImage = document.querySelector(".main-image img");
 
     tabButtons.forEach((button) => {
       button.addEventListener("click", () => {
@@ -341,58 +310,49 @@ export default {
         document.getElementById(tabId).classList.add("active");
       });
     });
+
+    // Thumbnail image switching
+    thumbnails.forEach((thumbnail) => {
+      thumbnail.addEventListener("click", () => {
+        // Update active thumbnail
+        thumbnails.forEach((thumb) => thumb.classList.remove("active"));
+        thumbnail.classList.add("active");
+
+        // Update main image (in a real scenario, you would change the src)
+        mainImage.src = thumbnail.querySelector("img").src;
+      });
+    });
+
+    // Quantity selector functionality
+    decreaseBtn.addEventListener("click", () => {
+      let value = parseInt(quantityInput.value);
+      if (value > 1) {
+        quantityInput.value = value - 1;
+      }
+    });
+
+    increaseBtn.addEventListener("click", () => {
+      let value = parseInt(quantityInput.value);
+      quantityInput.value = value + 1;
+    });
   },
 };
-//  Don't touch this script it is independent from vue
-// Tab switching functionality
-/*
-document.addEventListener("DOMContentLoaded", function () {
-
-  });
-
-  // Thumbnail image switching
-  const thumbnails = document.querySelectorAll(".thumbnail");
-  const mainImage = document.querySelector(".main-image img");
-
-  thumbnails.forEach((thumbnail) => {
-    thumbnail.addEventListener("click", () => {
-      // Update active thumbnail
-      thumbnails.forEach((thumb) => thumb.classList.remove("active"));
-      thumbnail.classList.add("active");
-
-      // Update main image (in a real scenario, you would change the src)
-      mainImage.src = thumbnail.querySelector("img").src;
-    });
-  });
-
-  // Quantity selector functionality
-  const decreaseBtn = document.querySelector(".quantity-btn:first-child");
-  const increaseBtn = document.querySelector(".quantity-btn:last-child");
-  const quantityInput = document.querySelector(".quantity-input");
-
-  decreaseBtn.addEventListener("click", () => {
-    let value = parseInt(quantityInput.value);
-    if (value > 1) {
-      quantityInput.value = value - 1;
-    }
-  });
-
-  increaseBtn.addEventListener("click", () => {
-    let value = parseInt(quantityInput.value);
-    quantityInput.value = value + 1;
-  });
-});
-*/
-
-// const changeButton = document.querySelector(".tabs-header");
-// changeButton.addEventListener("click", () => {
-//   console.log("you clicked me");
-// });
 </script>
 
 <style scoped>
 .outer-div {
   margin-top: 100px;
+}
+
+.all-product {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.rout-link {
+  text-decoration: none;
+  color: #333;
 }
 
 /* Product details container */

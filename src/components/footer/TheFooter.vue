@@ -2,7 +2,9 @@
   <footer class="footer-container">
     <div class="footer-content">
       <div class="footer-section">
-        <div class="footer-logo">LUXE JEWELRY</div>
+        <router-link to="/products">
+          <div class="footer-logo">GUPTA JEWELRY</div>
+        </router-link>
         <div class="footer-tagline">Timeless elegance for every occasion</div>
         <p>
           Crafting exquisite jewelry pieces since 1997. Each creation tells a
@@ -74,8 +76,8 @@
         </form>
         <div class="contact-info">
           <p><strong>Customer Service:</strong> 1-800-JEWELRY</p>
-          <p><strong>Email:</strong> support@luxejewelry.com</p>
-          <p><strong>Hours:</strong> Mon-Fri: 9AM-6PM EST</p>
+          <p><strong>Email:</strong> support@guptajewelry.com</p>
+          <p><strong>Hours:</strong> Mon-Fri: 9AM-6PM IST</p>
         </div>
       </div>
     </div>
@@ -88,12 +90,12 @@
         <i class="fab fa-cc-paypal" aria-label="PayPal"></i>
         <i class="fab fa-cc-apple-pay" aria-label="Apple Pay"></i>
       </div>
-      <p>&copy; 2025 LUXE JEWELRY. All Rights Reserved.</p>
-      <p>
+      <p>&copy; 2025 GUPTA JEWELRY. All Rights Reserved.</p>
+      <!-- <p>
         <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a> |
         <a href="#">Accessibility</a> |
         <a href="#">Do Not Sell My Information</a>
-      </p>
+      </p> -->
     </div>
   </footer>
 </template>
@@ -108,7 +110,8 @@ body {
 }
 
 .footer-container {
-  background-color: #f9f3ed;
+  background-color: #e5e5e5;
+  /* background-color: #e8c9c9; */
   padding: 60px 20px 20px;
   width: 100%;
   box-sizing: border-box;

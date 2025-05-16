@@ -1,12 +1,14 @@
 <template>
   <!-- 27391C give this color to the background of the image -->
   <nav class="navbar">
-    <div class="company-name">GUPTA JEWELERY</div>
+    <router-link to="/products" class="rout-link">
+      <div class="company-name">GUPTA JEWELERY</div>
+    </router-link>
     <div class="nav-links">
-      <a href="#login" style="color: #000">
+      <router-link to="/login" style="color: #000">
         <span class="login-icon">👤</span>
         Login
-      </a>
+      </router-link>
       <a href="#cart" class="link" style="position: relative; color: black">
         <span class="cart-icon">🛒</span>
         Cart
@@ -16,12 +18,17 @@
   </nav>
 </template>
 
+<script></script>
+
 <style scoped>
+.rout-link {
+  text-decoration: none;
+}
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #c9a57c;
+  background-color: #d2c4b5;
   position: fixed;
   z-index: 100;
   width: 100%;

@@ -350,6 +350,7 @@ export default {
 
 <style>
 body {
+  background-color: #f8f2ec;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
