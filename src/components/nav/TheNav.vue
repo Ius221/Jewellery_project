@@ -5,10 +5,16 @@
       <div class="company-name">GUPTA JEWELERY</div>
     </router-link>
     <div class="nav-links">
-      <router-link to="/login" style="color: #000">
-        <span class="login-icon">👤</span>
-        Login
-      </router-link>
+      <div>
+        <router-link
+          :to="routerFetch === '/login' ? '/registration' : '/login'"
+          style="color: #000"
+        >
+          <span class="login-icon">👤</span>
+          {{ routerFetch === "/login" ? "Register" : "login" }}
+        </router-link>
+      </div>
+
       <a href="#cart" class="link" style="position: relative; color: black">
         <span class="cart-icon">🛒</span>
         Cart
@@ -18,7 +24,20 @@
   </nav>
 </template>
 
-<script></script>
+<script>
+export default {
+  data() {
+    return {
+      login: true,
+    };
+  },
+  computed: {
+    routerFetch() {
+      return this.$route.path;
+    },
+  },
+};
+</script>
 
 <style scoped>
 .rout-link {
@@ -90,11 +109,13 @@
 
   .company-name {
     font-size: 1rem;
+    margin-left: 5px;
   }
 
   .nav-links {
     gap: 1rem;
-    padding-right: 25px;
+    margin-right: 25px;
+    /* padding-right: 5px; */
   }
 }
 </style>

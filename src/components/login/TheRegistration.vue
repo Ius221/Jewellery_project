@@ -12,36 +12,65 @@
           </p>
         </div>
 
-        <form id="signup-form">
+        <form id="signup-form" @submit.prevent="newAccountData">
           <div class="form-row">
             <div class="form-group">
               <label for="first-name">First Name *</label>
-              <input type="text" id="first-name" name="first-name" required />
+              <input
+                type="text"
+                id="first-name"
+                name="first-name"
+                required
+                v-model="firstName"
+              />
             </div>
 
             <div class="form-group">
               <label for="last-name">Last Name *</label>
-              <input type="text" id="last-name" name="last-name" required />
+              <input
+                type="text"
+                id="last-name"
+                name="last-name"
+                required
+                v-model="lastName"
+              />
             </div>
           </div>
 
           <div class="form-group">
             <label for="email">Email Address *</label>
-            <input type="email" id="email" name="email" required />
+            <input
+              type="email"
+              id="email"
+              name="email"
+              required
+              v-model="email"
+            />
           </div>
 
           <div class="form-group">
-            <label for="phone">Phone Number (Optional)</label>
-            <input type="tel" id="phone" name="phone" />
+            <label for="phone">Phone Number *</label>
+            <input
+              type="tel"
+              id="phone"
+              name="phone"
+              required
+              v-model="phone"
+            />
           </div>
 
           <div class="form-row">
             <div class="form-group">
               <label for="password">Password *</label>
-              <input type="password" id="password" name="password" required />
+              <input
+                type="password"
+                id="password"
+                name="password"
+                required
+                v-model="pass1"
+              />
               <div class="password-requirements">
-                Must be at least 8 characters with a number and special
-                character
+                Must be at least 8 characters with numbers
               </div>
             </div>
 
@@ -52,16 +81,10 @@
                 id="confirm-password"
                 name="confirm-password"
                 required
+                v-model="pass2"
               />
             </div>
           </div>
-
-          <!-- <div class="form-group">
-            <label for="birth-date"
-              >Birth Date (Optional - for birthday offers)</label
-            >
-            <input type="date" id="birth-date" name="birth-date" />
-          </div> -->
 
           <div class="checkbox-group">
             <input type="checkbox" id="newsletter" name="newsletter" checked />
@@ -92,6 +115,61 @@
     </div>
   </main>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      firstName: "",
+      lastName: "",
+      email: "",
+      phone: "",
+      pass1: "",
+      pass2: "",
+    };
+  },
+  methods: {
+    newAccountData() {
+      if (this.pass1 !== this.pass2) {
+        alert("password are not same");
+        return;
+      }
+
+      if (this.containNumber(this.pass1)) {
+        const userObject = {
+          fullName: this.firstName + " " + this.lastName,
+          email: this.email,
+          phone: this.phone,
+          password: this.pass1,
+        };
+
+        fetch(
+          "https://vue-project-gupta-jewelery-default-rtdb.firebaseio.com/usersData.json",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(userObject),
+          }
+        );
+
+        this.firstName = "";
+        this.lastName = "";
+        this.email = "";
+        this.phone = "";
+        this.pass1 = "";
+        this.pass2 = "";
+      } else alert("Your password doesn't match out criteria");
+    },
+
+    //Check string is contain number or not
+    containNumber(str) {
+      return /\d/.test(str);
+    },
+  },
+};
+</script>
 
 <style scoped>
 main {
