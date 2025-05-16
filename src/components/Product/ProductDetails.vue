@@ -120,130 +120,130 @@
     <!-- Product tabs -->
     <div class="product-tabs">
       <div class="tabs-header">
-        <button class="tab-btn" data-tab="description">Description</button>
-        <button class="tab-btn" data-tab="specs">Specifications</button>
-        <button class="tab-btn active" data-tab="shipping">
-          Shipping & Returns
+        <button class="tab-btn active" data-tab="description">
+          Description
         </button>
+        <button class="tab-btn" data-tab="specs">Specifications</button>
+        <button class="tab-btn" data-tab="shipping">Shipping & Returns</button>
       </div>
 
-      <div class="all-tab-contents">
-        <!-- Description bar -->
-        <div id="description" class="tab-content">
-          <h3>Product Description</h3>
-          <p>
-            {{ currentProduct.longDesc.first }}
-          </p>
-          <p>
-            {{ currentProduct.longDesc.second }}
-          </p>
-          <p>
-            {{ currentProduct.longDesc.third }}
-          </p>
-          <p>
-            {{ currentProduct.longDesc.fourth }}
-          </p>
-        </div>
-
-        <!-- Specification bar -->
-        <div id="specs" class="tab-content active">
-          <h3>Technical Specifications</h3>
-          <ul>
-            <li>
-              <strong>Metal:</strong>
-              {{ currentProduct.techSpecification.metal }}
-            </li>
-            <li>
-              <strong>Diamond Weight:</strong
-              >{{ currentProduct.techSpecification.diamondWeight }}
-            </li>
-            <li>
-              <strong>Diamond Shape:</strong>
-              {{ currentProduct.techSpecification.diamondShape }}
-            </li>
-            <li>
-              <strong>Diamond Color:</strong>
-              {{ currentProduct.techSpecification.diamondColor }}
-            </li>
-            <li>
-              <strong>Diamond Clarity:</strong
-              >{{ currentProduct.techSpecification.diamondClarity }}
-            </li>
-            <li>
-              <strong>Diamond Cut Grade:</strong>
-              {{ currentProduct.techSpecification.diamondCutGrade }}
-            </li>
-            <li>
-              <strong>Diamond Polish:</strong>
-              {{ currentProduct.techSpecification.diamondPolish }}
-            </li>
-            <li>
-              <strong>Diamond Symmetry:</strong>
-              {{ currentProduct.techSpecification.diamondSymmetry }}
-            </li>
-            <li>
-              <strong>Setting Style:</strong>
-              {{ currentProduct.techSpecification.settingStyle }}
-            </li>
-            <li>
-              <strong>Band Width:</strong>
-              {{ currentProduct.techSpecification.bandWidth }}
-            </li>
-            <li>
-              <strong>Band Thickness:</strong
-              >{{ currentProduct.techSpecification.bandThickness }}
-            </li>
-            <li>
-              <strong>Ring Size Range:</strong>
-              {{ currentProduct.techSpecification.ringSizeRange }}
-            </li>
-            <li>
-              <strong>Certification:</strong>
-              {{ currentProduct.techSpecification.certification }}
-            </li>
-            <li>
-              <strong>Engraving:</strong
-              >{{ currentProduct.techSpecification.engravingDescription }}
-            </li>
-            <li>
-              <strong>Finish:</strong>
-              {{ currentProduct.techSpecification.finish }}
-            </li>
-          </ul>
-        </div>
-
-        <!-- This is the shipping tab All if fine Don't touch it -->
-        <div id="shipping" class="tab-content">
-          <h3>Shipping Information</h3>
-          <p><strong>Processing Time:</strong> 1-3 business days</p>
-          <p>
-            <strong>Standard Shipping:</strong> 3-5 business days (Free on
-            orders over $500)
-          </p>
-          <p><strong>Express Shipping:</strong> 1-2 business days ($25)</p>
-          <p>
-            <strong>International Shipping:</strong> 7-14 business days (Varies
-            by location)
-          </p>
-
-          <h3>Returns & Exchanges</h3>
-          <p>
-            We want you to be completely satisfied with your purchase. If for
-            any reason you're not entirely happy, we offer:
-          </p>
-          <ul>
-            <li>30-day return policy for full refund or exchange</li>
-            <li>Free return shipping for domestic orders</li>
-            <li>Lifetime warranty on all diamond jewelry</li>
-            <li>Free ring resizing within 60 days of purchase</li>
-          </ul>
-
-          <p>
-            <strong>Please Note:</strong> Custom or engraved items cannot be
-            returned unless there is a manufacturing defect.
-          </p>
-        </div>
+      <!-- <div class="all-tab-contents"> -->
+      <!-- Description bar -->
+      <div id="description" class="tab-content active">
+        <h3>Product Description</h3>
+        <p>
+          {{ currentProduct.longDesc.first }}
+        </p>
+        <p>
+          {{ currentProduct.longDesc.second }}
+        </p>
+        <p>
+          {{ currentProduct.longDesc.third }}
+        </p>
+        <p>
+          {{ currentProduct.longDesc.fourth }}
+        </p>
       </div>
+
+      <!-- Specification bar -->
+      <div id="specs" class="tab-content">
+        <h3>Technical Specifications</h3>
+        <ul>
+          <li>
+            <strong>Metal:</strong>
+            {{ currentProduct.techSpecification.metal }}
+          </li>
+          <li>
+            <strong>Diamond Weight:</strong
+            >{{ currentProduct.techSpecification.diamondWeight }}
+          </li>
+          <li>
+            <strong>Diamond Shape:</strong>
+            {{ currentProduct.techSpecification.diamondShape }}
+          </li>
+          <li>
+            <strong>Diamond Color:</strong>
+            {{ currentProduct.techSpecification.diamondColor }}
+          </li>
+          <li>
+            <strong>Diamond Clarity:</strong
+            >{{ currentProduct.techSpecification.diamondClarity }}
+          </li>
+          <li>
+            <strong>Diamond Cut Grade:</strong>
+            {{ currentProduct.techSpecification.diamondCutGrade }}
+          </li>
+          <li>
+            <strong>Diamond Polish:</strong>
+            {{ currentProduct.techSpecification.diamondPolish }}
+          </li>
+          <li>
+            <strong>Diamond Symmetry:</strong>
+            {{ currentProduct.techSpecification.diamondSymmetry }}
+          </li>
+          <li>
+            <strong>Setting Style:</strong>
+            {{ currentProduct.techSpecification.settingStyle }}
+          </li>
+          <li>
+            <strong>Band Width:</strong>
+            {{ currentProduct.techSpecification.bandWidth }}
+          </li>
+          <li>
+            <strong>Band Thickness:</strong
+            >{{ currentProduct.techSpecification.bandThickness }}
+          </li>
+          <li>
+            <strong>Ring Size Range:</strong>
+            {{ currentProduct.techSpecification.ringSizeRange }}
+          </li>
+          <li>
+            <strong>Certification:</strong>
+            {{ currentProduct.techSpecification.certification }}
+          </li>
+          <li>
+            <strong>Engraving:</strong
+            >{{ currentProduct.techSpecification.engravingDescription }}
+          </li>
+          <li>
+            <strong>Finish:</strong>
+            {{ currentProduct.techSpecification.finish }}
+          </li>
+        </ul>
+      </div>
+
+      <!-- This is the shipping tab All if fine Don't touch it -->
+      <div id="shipping" class="tab-content">
+        <h3>Shipping Information</h3>
+        <p><strong>Processing Time:</strong> 1-3 business days</p>
+        <p>
+          <strong>Standard Shipping:</strong> 3-5 business days (Free on orders
+          over $500)
+        </p>
+        <p><strong>Express Shipping:</strong> 1-2 business days ($25)</p>
+        <p>
+          <strong>International Shipping:</strong> 7-14 business days (Varies by
+          location)
+        </p>
+
+        <h3>Returns & Exchanges</h3>
+        <p>
+          We want you to be completely satisfied with your purchase. If for any
+          reason you're not entirely happy, we offer:
+        </p>
+        <ul>
+          <li>30-day return policy for full refund or exchange</li>
+          <li>Free return shipping for domestic orders</li>
+          <li>Lifetime warranty on all diamond jewelry</li>
+          <li>Free ring resizing within 60 days of purchase</li>
+        </ul>
+
+        <p>
+          <strong>Please Note:</strong> Custom or engraved items cannot be
+          returned unless there is a manufacturing defect.
+        </p>
+      </div>
+      <!-- </div> -->
     </div>
 
     <!-- Related products -->
