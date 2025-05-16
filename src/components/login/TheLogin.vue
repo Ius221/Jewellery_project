@@ -6,7 +6,7 @@
 
         <div class="login-form-container">
           <div class="login-form-header">
-            <h1>Welcome Back</h1>
+            <h1 class="page-title">Welcome Back</h1>
             <p>Please enter your credentials to access your account</p>
           </div>
 
@@ -25,22 +25,7 @@
               <a href="#">Forgot Password?</a>
             </div>
 
-            <button type="submit" class="form-submit">Log In</button
-            ><br /><br />
-            <button type="submit" class="admin-login">Admin Log In</button>
-
-            <!-- <div class="alternate-auth">
-              <p>Or continue with</p>
-              <div class="social-login">
-                <button type="button">
-                  <i class="fab fa-google"></i> Google
-                </button>
-                <button type="button">
-                  <i class="fab fa-facebook-f"></i> Facebook
-                </button>
-              </div>
-            </div> -->
-
+            <button type="submit" class="form-submit">Log In</button>
             <div class="create-account">
               <p>
                 Don't have an account?
@@ -123,9 +108,10 @@ main {
 }
 
 .login-form-header h1 {
-  font-size: 28px;
+  font-size: 32px;
+  font-family: "Cormorant Garamond", serif;
   color: #333333;
-  font-weight: 400;
+  font-weight: 600;
   margin-bottom: 10px;
 }
 

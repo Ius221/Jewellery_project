@@ -53,12 +53,14 @@ export default {
   width: 100%;
   color: white;
   padding: 1rem 2rem;
+  /* font-size: 88px; */
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .company-name {
   color: #3c3125;
-  font-size: 1.5rem;
+  font-size: 2rem;
+  font-family: "Cormorant Garamond", serif;
   font-weight: bold;
   letter-spacing: 1px;
   margin-left: 200px;
@@ -73,7 +75,7 @@ export default {
 .nav-links a {
   color: white;
   text-decoration: none;
-  font-size: 1rem;
+  font-size: 1.3rem;
   transition: color 0.3s ease;
   display: flex;
   align-items: center;
@@ -92,7 +94,7 @@ export default {
   background-color: #f8c93e;
   color: #333;
   border-radius: 50%;
-  font-size: 0.7rem;
+  font-size: 1rem;
   font-weight: bold;
   height: 18px;
   width: 18px;

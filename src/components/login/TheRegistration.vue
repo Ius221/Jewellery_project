@@ -227,9 +227,10 @@ main {
 }
 
 .signup-form-header h1 {
-  font-size: 28px;
+  font-size: 32px;
+  font-family: "Cormorant Garamond", serif;
   color: #333333;
-  font-weight: 400;
+  font-weight: 600;
   margin-bottom: 10px;
 }
 
