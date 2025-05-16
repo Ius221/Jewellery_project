@@ -3,11 +3,11 @@
   <nav class="navbar">
     <div class="company-name">GUPTA JEWELERY</div>
     <div class="nav-links">
-      <a href="#login">
+      <a href="#login" style="color: #000">
         <span class="login-icon">👤</span>
         Login
       </a>
-      <a href="#cart" style="position: relative">
+      <a href="#cart" class="link" style="position: relative; color: black">
         <span class="cart-icon">🛒</span>
         Cart
         <span class="cart-count">3</span>
@@ -21,22 +21,27 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: radial-gradient(circle, #1f7d53, #255f38);
-
+  background-color: #c9a57c;
+  position: fixed;
+  z-index: 100;
+  width: 100%;
   color: white;
   padding: 1rem 2rem;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .company-name {
+  color: #3c3125;
   font-size: 1.5rem;
   font-weight: bold;
   letter-spacing: 1px;
+  margin-left: 200px;
 }
 
 .nav-links {
   display: flex;
   gap: 1.5rem;
+  margin-right: 150px;
 }
 
 .nav-links a {
@@ -77,11 +82,12 @@
   }
 
   .company-name {
-    font-size: 1.2rem;
+    font-size: 1rem;
   }
 
   .nav-links {
     gap: 1rem;
+    padding-right: 25px;
   }
 }
 </style>

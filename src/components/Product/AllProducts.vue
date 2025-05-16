@@ -1,7 +1,7 @@
 <template>
   <div class="outer-div">
     <div class="product-container">
-      <template v-for="(product, ind) in dummyProduct" :key="ind">
+      <template v-for="(product, ind) in allProducts" :key="ind">
         <div class="product-card">
           <div class="product-image">
             <img :src="product.image" alt="Diamond Engagement Ring" />
@@ -9,70 +9,29 @@
           <div class="product-info">
             <h3 class="product-title">{{ product.name }}</h3>
             <p class="product-description">
-              {{ product.desc }}
+              {{ product.outerDesc }}
             </p>
             <div class="product-details">
               <span class="product-price">${{ product.price }}</span>
               <span class="product-material">{{ product.material }}</span>
             </div>
             <div class="product-buttons">
-              <button class="btn btn-details">Show Details</button>
+              <router-link :to="'/products/' + product.id">
+                <button class="btn btn-details">Show Details</button>
+              </router-link>
               <button class="btn btn-cart">Add to Cart</button>
             </div>
           </div>
         </div>
       </template>
     </div>
+    <!-- <product-details /> -->
   </div>
 </template>
 
 <script>
 export default {
-  data() {
-    return {
-      dummyProduct: [
-        {
-          id: 0,
-          image:
-            "https://www.withclarity.com/cdn/shop/articles/SOLITAIRE_ENGAGEMENT_RINGS.jpg?v=1697178742",
-          name: "Diamond Solitaire Ring",
-          desc: "Elegant solitaire ring featuring a brilliant-cut diamond set in a timeless four-prong setting. Perfect for engagements or special occasions.",
-          price: "1,299.99",
-          material: "18K White Gold",
-        },
-        {
-          id: 1,
-          image:
-            "https://images.pexels.com/photos/21235148/pexels-photo-21235148/free-photo-of-silver-pendant-with-an-emerald.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load",
-          name: "Freshwater Pearl Necklace",
-          desc: "Stunning strand of lustrous freshwater pearls, hand-selected for their exceptional quality and matched for uniform color and size.",
-          price: "499.99",
-          material: "Natural Pearls",
-        },
-        {
-          id: 2,
-          image:
-            "https://i.etsystatic.com/14533306/r/il/116d90/4411460223/il_1080xN.4411460223_8u0j.jpg",
-          name: "Twisted Gold Bracelet",
-          desc: "Elegantly twisted gold bracelet with a secure lobster clasp. Versatile design perfect for daily wear or special occasions.",
-          price: "799.99",
-          material: "14K Gold",
-        },
-        {
-          id: 3,
-          image:
-            "https://images.pexels.com/photos/21235147/pexels-photo-21235147/free-photo-of-close-up-of-golden-earrings.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load",
-          name: "Sapphire Drop Earrings",
-          desc: "Exquisite drop earrings featuring oval blue sapphires surrounded by a halo of brilliant diamonds, creating a captivating sparkle.",
-          price: "1,499.99",
-          material: "Platinum",
-        },
-      ],
-    };
-  },
-  created() {
-    console.log(this.mainObject);
-  },
+  inject: ["allProducts"],
 };
 </script>
 
@@ -82,8 +41,8 @@ export default {
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 25px;
   max-width: 1300px;
-  margin: 0 auto;
-  margin-top: 50px;
+  margin: 100px auto;
+  /* margin-bottom: 100px; */
 }
 
 .product-card {
