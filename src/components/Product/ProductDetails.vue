@@ -343,7 +343,10 @@ export default {
 .outer-div {
   margin-top: 100px;
 }
-
+h4 {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.3rem;
+}
 .all-product {
   display: flex;
   justify-content: space-between;
@@ -419,9 +422,10 @@ export default {
 }
 
 .product-title {
-  font-size: 2rem;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 2.5rem;
   margin-bottom: 10px;
-  color: #333;
+  color: #000;
 }
 
 .product-subtitle {
@@ -432,7 +436,7 @@ export default {
 
 .product-price {
   font-size: 1.8rem;
-  font-weight: bold;
+  /* font-weight: bold; */
   color: #333;
   margin-bottom: 20px;
 }
@@ -465,9 +469,11 @@ export default {
 }
 
 .spec-title {
+  font-family: "Cormorant Garamond", serif;
   font-weight: bold;
   margin-bottom: 15px;
-  font-size: 1.1rem;
+  font-size: 1.5rem;
+  color: #333;
 }
 
 .spec-list {
@@ -482,8 +488,8 @@ export default {
 }
 
 .spec-label {
-  font-weight: bold;
-  color: #666;
+  /* font-weight: bold; */
+  color: #333;
   width: 100px;
   flex-shrink: 0;
 }
@@ -500,7 +506,7 @@ export default {
 
 .quantity-label {
   margin-right: 15px;
-  font-weight: bold;
+  /* font-weight: bold; */
 }
 
 .quantity-controls {
@@ -610,8 +616,9 @@ export default {
 }
 
 .tab-content h3 {
+  font-family: "Cormorant Garamond", serif;
   margin-bottom: 15px;
-  font-size: 1.3rem;
+  font-size: 1.7rem;
 }
 
 .tab-content p,
@@ -633,7 +640,8 @@ export default {
 }
 
 .section-title {
-  font-size: 1.5rem;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.7rem;
   margin-bottom: 25px;
   position: relative;
   padding-bottom: 10px;
@@ -688,16 +696,17 @@ export default {
 }
 
 .card-title {
-  font-size: 1rem;
-  font-weight: bold;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.5rem;
+  font-weight: bolder;
   margin-bottom: 5px;
   color: #333;
 }
 
 .card-price {
   font-size: 1.1rem;
-  font-weight: bold;
   color: #333;
+  margin-left: 5px;
   margin-bottom: 10px;
 }
 

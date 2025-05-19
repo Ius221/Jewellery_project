@@ -4,6 +4,7 @@ import AllProducts from './components/Product/AllProducts.vue';
 import ProductDetails from './components/Product/ProductDetails.vue';
 import TheLogin from './components/login/TheLogin.vue';
 import TheRegistration from './components/login/TheRegistration.vue';
+import TheHome from './components/home/TheHome.vue';
 
 const routes = [
     { path: '/', redirect: '/products' },
@@ -11,6 +12,8 @@ const routes = [
     { path: '/Products/:productId', component: ProductDetails, },
     { path: '/login', component: TheLogin },
     { path: '/registration', component: TheRegistration },
+    { path: '/home', component: TheHome },
+
     // { path: '/ProductsDetails', component: ProductDetails },
 ]
 

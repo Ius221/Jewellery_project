@@ -1,7 +1,18 @@
 <template>
   <div>
     <main>
-      <div class="login-container">
+      <!-- Loading spinner -->
+      <div class="loading-container" v-if="isLoading">
+        <div class="spinner"></div>
+        <div class="loading-text">Please wait a while...</div>
+      </div>
+      <div v-if="goHome" class="lastOption">
+        <h3 style="font-size: 24px">Login Successfully</h3>
+        <button style="width: 65%" class="form-submit" @click="goToHome">
+          Go to Home
+        </button>
+      </div>
+      <div class="login-container" v-if="!isLoading && !goHome">
         <div class="login-image"></div>
 
         <div class="login-form-container">
@@ -10,15 +21,27 @@
             <p>Please enter your credentials to access your account</p>
           </div>
 
-          <form id="login-form">
+          <form id="login-form" @submit.prevent="formSubmit">
             <div class="form-group">
               <label for="email">Email Address</label>
-              <input type="email" id="email" name="email" required />
+              <input
+                type="email"
+                id="email"
+                name="email"
+                required
+                v-model="email"
+              />
             </div>
 
             <div class="form-group">
               <label for="password">Password</label>
-              <input type="password" id="password" name="password" required />
+              <input
+                type="password"
+                id="password"
+                name="password"
+                required
+                v-model="password"
+              />
             </div>
 
             <div class="forgot-password">
@@ -38,6 +61,41 @@
     </main>
   </div>
 </template>
+
+<script>
+import { login } from "@/AuthService";
+
+export default {
+  data() {
+    return {
+      email: "",
+      password: "",
+      isLoading: false,
+      goHome: false,
+    };
+  },
+  methods: {
+    goToHome() {
+      this.$router.push("/home");
+    },
+    async formSubmit() {
+      this.isLoading = true;
+
+      try {
+        await login(this.email, this.password);
+        this.isLoading = false;
+        this.goHome = true;
+      } catch (err) {
+        this.isLoading = false;
+        alert("Login Failed");
+      }
+      console.log("Email:", this.email, typeof this.email);
+
+      console.log(this.email, this.password);
+    },
+  },
+};
+</script>
 
 <style scoped>
 .admin-login {
@@ -61,7 +119,14 @@ main {
   padding: 40px 20px;
   background-color: #f9f3ed;
 }
-
+.lastOption {
+  margin-top: 250px;
+  margin-bottom: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 .login-container {
   margin-top: 65px;
   width: 100%;
@@ -228,6 +293,38 @@ main {
   padding: 60px 20px 20px;
   width: 100%;
   box-sizing: border-box;
+}
+
+.loading-container {
+  margin-top: 250px;
+  margin-bottom: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.spinner {
+  width: 60px;
+  height: 60px;
+  border: 6px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  border-top: 6px solid #3498db;
+  animation: spin 1s linear infinite;
+}
+
+.loading-text {
+  font-size: 18px;
+  color: #333;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 /* Footer styles omitted for brevity - same as in the previous artifact */

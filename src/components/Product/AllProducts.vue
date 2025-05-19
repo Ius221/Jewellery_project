@@ -12,7 +12,7 @@
               {{ product.outerDesc }}
             </p>
             <div class="product-details">
-              <span class="product-price">${{ product.price }}</span>
+              <span class="product-price">$ {{ product.price }}</span>
               <span class="product-material">{{ product.material }}</span>
             </div>
             <div class="product-buttons">
@@ -80,16 +80,18 @@ export default {
 }
 
 .product-title {
-  font-size: 1.2rem;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.5rem;
   font-weight: bold;
   margin-bottom: 8px;
-  color: #333;
+  color: #000;
 }
 
 .product-description {
   font-size: 0.9rem;
   color: #666;
   margin-bottom: 12px;
+  height: 100px;
   line-height: 1.4;
 }
 
@@ -100,8 +102,10 @@ export default {
 }
 
 .product-price {
+  /* font-family: "Cormorant Garamond", serif;  */
+  margin-left: 2px;
   font-size: 1.2rem;
-  font-weight: bold;
+  font-weight: normal;
   color: #333;
 }
 

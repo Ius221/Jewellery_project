@@ -5,17 +5,16 @@
       <div class="company-name">GUPTA JEWELERY</div>
     </router-link>
     <div class="nav-links">
-      <div>
+      <div class="link">
         <router-link
           :to="routerFetch === '/login' ? '/registration' : '/login'"
-          style="color: #000"
         >
           <span class="login-icon">👤</span>
           {{ routerFetch === "/login" ? "Register" : "login" }}
         </router-link>
       </div>
 
-      <a href="#cart" class="link" style="position: relative; color: black">
+      <a href="#cart" class="link" style="">
         <span class="cart-icon">🛒</span>
         Cart
         <span class="cart-count">3</span>
@@ -40,8 +39,15 @@ export default {
 </script>
 
 <style scoped>
+.link {
+  position: relative;
+  color: #3c3125;
+  font-family: "Cormorant Garamond", serif;
+}
+
 .rout-link {
   text-decoration: none;
+  color: #3c3125;
 }
 .navbar {
   display: flex;
@@ -51,7 +57,7 @@ export default {
   position: fixed;
   z-index: 100;
   width: 100%;
-  color: white;
+  /* color: white; */
   padding: 1rem 2rem;
   /* font-size: 88px; */
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -73,7 +79,8 @@ export default {
 }
 
 .nav-links a {
-  color: white;
+  color: #3c3125;
+  font-weight: 650;
   text-decoration: none;
   font-size: 1.3rem;
   transition: color 0.3s ease;
@@ -82,7 +89,7 @@ export default {
 }
 
 .nav-links a:hover {
-  color: #f8c93e;
+  color: #000;
 }
 
 .cart-icon,

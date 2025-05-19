@@ -1,6 +1,19 @@
 <template>
   <main>
-    <div class="signup-container">
+    <!-- Loading spinner -->
+    <div class="loading-container" v-if="isLoading">
+      <div class="spinner"></div>
+      <!-- <div class="loading-text">Loading...</div> -->
+      <div class="loading-text">Please wait a while...</div>
+    </div>
+    <div v-if="accnCreated" class="lastOption">
+      <h3 style="font-size: 24px">Account Created Successfully</h3>
+      <button style="width: 55%" class="form-submit" @click="goToLogin">
+        Back to login
+      </button>
+    </div>
+    <!-- Other container -->
+    <div class="signup-container" v-if="!isLoading && !accnCreated">
       <div class="signup-image"></div>
 
       <div class="signup-form-container">
@@ -117,6 +130,10 @@
 </template>
 
 <script>
+import { register } from "@/AuthService";
+import { doc, setDoc } from "firebase/firestore";
+import { db } from "@/firebase";
+
 export default {
   data() {
     return {
@@ -126,46 +143,49 @@ export default {
       phone: "",
       pass1: "",
       pass2: "",
+      isLoading: false,
+      accnCreated: false,
     };
   },
   methods: {
-    newAccountData() {
+    async newAccountData() {
       if (this.pass1 !== this.pass2) {
         alert("password are not same");
         return;
       }
 
       if (this.containNumber(this.pass1)) {
-        const userObject = {
-          fullName: this.firstName + " " + this.lastName,
-          email: this.email,
-          phone: this.phone,
-          password: this.pass1,
-        };
+        this.isLoading = true;
+        try {
+          const userCredential = await register(this.email, this.pass1);
+          const user = userCredential.user;
 
-        fetch(
-          "https://vue-project-gupta-jewelery-default-rtdb.firebaseio.com/usersData.json",
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
+          // Store additional data in Firebase
+          await setDoc(doc(db, "users", user.uid), {
+            name: {
+              firstName: this.firstName,
+              lastName: this.lastName,
             },
-            body: JSON.stringify(userObject),
-          }
-        );
+            phone: this.phone,
+            email: this.email,
+          });
 
-        this.firstName = "";
-        this.lastName = "";
-        this.email = "";
-        this.phone = "";
-        this.pass1 = "";
-        this.pass2 = "";
+          this.isLoading = false;
+          this.accnCreated = true;
+        } catch (err) {
+          this.isLoading = false;
+          alert(err.message);
+        }
       } else alert("Your password doesn't match out criteria");
     },
 
     //Check string is contain number or not
     containNumber(str) {
       return /\d/.test(str);
+    },
+
+    goToLogin() {
+      this.$router.push("/login");
     },
   },
 };
@@ -179,6 +199,43 @@ main {
   justify-content: center;
   padding: 40px 20px;
   background-color: #f9f3ed;
+}
+
+.lastOption {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.spinner {
+  width: 60px;
+  height: 60px;
+  border: 6px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  border-top: 6px solid #3c3125;
+  animation: spin 1s linear infinite;
+}
+
+.loading-text {
+  font-size: 18px;
+  color: #333;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .signup-container {
