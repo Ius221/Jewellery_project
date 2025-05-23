@@ -82,7 +82,7 @@ export default {
       this.isLoading = true;
 
       try {
-        await login(this.email, this.password);
+        console.log(await login(this.email, this.password));
         this.isLoading = false;
         this.goHome = true;
       } catch (err) {

@@ -1,15 +1,15 @@
 import { createRouter, createWebHistory } from 'vue-router';
 
-import AllProducts from './components/Product/AllProducts.vue';
-import ProductDetails from './components/Product/ProductDetails.vue';
+import RingProducts from './components/Product/RingProducts.vue';
+import RingsDetails from './components/Product/RingsDetails.vue';
 import TheLogin from './components/login/TheLogin.vue';
 import TheRegistration from './components/login/TheRegistration.vue';
 import TheHome from './components/home/TheHome.vue';
 
 const routes = [
-    { path: '/', redirect: '/products' },
-    { path: '/Products', component: AllProducts, },
-    { path: '/Products/:productId', component: ProductDetails, },
+    { path: '/', redirect: '/home' },
+    { path: '/rings', component: RingProducts, },
+    { path: '/rings/:productId', component: RingsDetails, },
     { path: '/login', component: TheLogin },
     { path: '/registration', component: TheRegistration },
     { path: '/home', component: TheHome },

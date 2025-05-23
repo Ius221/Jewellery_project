@@ -2,7 +2,7 @@
   <footer class="footer-container">
     <div class="footer-content">
       <div class="footer-section">
-        <router-link to="/products">
+        <router-link to="/home">
           <div class="footer-logo">GUPTA JEWELRY</div>
         </router-link>
         <div class="footer-tagline">Timeless elegance for every occasion</div>

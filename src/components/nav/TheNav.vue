@@ -1,7 +1,7 @@
 <template>
   <!-- 27391C give this color to the background of the image -->
   <nav class="navbar">
-    <router-link to="/products" class="rout-link">
+    <router-link to="/home" class="rout-link">
       <div class="company-name">GUPTA JEWELERY</div>
     </router-link>
     <div class="nav-links">
